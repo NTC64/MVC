@@ -32,13 +32,15 @@ if (isset($_POST["btn_save"])) {
         <tr>
             <td>Mã sản phẩm</td>
             <td>
-                <input type="text" name="txt_masp" id="">
+
+                <input type="text" name="txt_masp" id="" value="<?php echo $data["data3"][0]["ma_sp"] ?>">
+
             </td>
         </tr>
         <tr>
             <td>Tên sản phẩm</td>
             <td>
-                <input type="text" name="txt_tensp" id="">
+                <input type="text" name="txt_tensp" id="" value="<?php echo $data["data3"][0]["tensp"] ?>">
             </td>
         </tr>
         <tr>
@@ -107,8 +109,9 @@ if (isset($_POST["btn_save"])) {
                         <td><?php echo $value['dongia'] ?></td>
                         <td><?php echo $value['soluong'] ?></td>
                         <td><?php echo $value['khuyenmai'] ?></td>
+
                         <td><a href="product/delete/<?php echo $value['ma_sp']; ?>">Delete</a></td>
-                        <td><a href="getProduct/<?php echo $value['ma_sp']; ?>">sửa</a></td>
+                        <td><a href="<?php echo (url); ?>/product/getProduct/<?php echo $value['ma_sp']; ?>">sửa</a></td>
                     </tr>
                 <?php } ?>
             </tbody>

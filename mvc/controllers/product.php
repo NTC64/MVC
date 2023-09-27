@@ -11,8 +11,8 @@ class product extends Controller
      public function getProductID()
      {
           $obj = $this->model("productModel");
-          $data1 = $obj->showListproduct(); // Lấy dữ liệu cho Data 1
-          $data2 = $obj->showProducttype(); // Lấy dữ liệu cho Data 2
+          $data1 = $obj->showListproduct();
+          $data2 = $obj->showProducttype();
           // Gom cả hai dữ liệu vào một biến
           $data = array(
                "data1" => $data1,
@@ -31,7 +31,15 @@ class product extends Controller
      function getProduct($ma_sp)
      {
           $obj = $this->model("productModel");
-          $data = $obj->getProduct($ma_sp);
+          $data1 = $obj->showListproduct();
+          $data2 = $obj->showProducttype();
+          $data3 = $obj->getProduct($ma_sp);
+          $data = array(
+               "data1" => $data1,
+               "data2" => $data2,
+               "data3" => $data3
+
+          );
           $this->view("view_Adproduct", $data);
      }
      public function insert($ma_loaisp, $ma_sp, $tensp, $hinhanh, $dongia, $soluong, $khuyenmai, $create_date)
