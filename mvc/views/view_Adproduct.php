@@ -1,7 +1,7 @@
 <?php
 $obj = new product;
 $obj->getProductID();
-$obj->show();
+
 $ma_loaisp = isset($_POST["dropdow"]) ? $_POST["dropdow"] : "";
 $txt_masp = isset($_POST["txt_masp"]) ? $_POST["txt_masp"] : "";
 $txt_tensp = isset($_POST["txt_tensp"]) ? $_POST["txt_tensp"] : "";
@@ -108,7 +108,7 @@ if (isset($_POST["btn_save"])) {
                         <td><?php echo $value['soluong'] ?></td>
                         <td><?php echo $value['khuyenmai'] ?></td>
                         <td><a href="product/delete/<?php echo $value['ma_sp']; ?>">Delete</a></td>
-                        <td><a href="home/delete/<?php echo $value['ma_loaisp']; ?>">sửa</a></td>
+                        <td><a href="getProduct/<?php echo $value['ma_sp']; ?>">sửa</a></td>
                     </tr>
                 <?php } ?>
             </tbody>

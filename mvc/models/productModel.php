@@ -43,6 +43,26 @@ class productModel  extends Database
         $this->connect()->exec($sql);
         echo "ghi mới thành công";
     }
+    public function getProduct($ma_sp)
+    {
+        $sql = "select * from product where ma_sp='$ma_sp'";
+        $stm = $this->connect()->query($sql);
+        while ($row = $stm->fetch()) {
+            $data[] = $row;
+        }
+        if (empty($data))
+            echo ("");
+        else
+            // var_dump($data[]);
+            return $data;
+    }
+    public function updateProduct($ma_loaisp, $ma_sp, $tensp, $hinhanh, $dongia, $soluong, $khuyenmai, $create_date)
+    {
+        $sql = "UPDATE product SET ma_loaisp='$ma_loaisp', tensp='$tensp', hinhanh='$hinhanh', dongia='$dongia', soluong='$soluong', khuyenmai='$khuyenmai', create_date='$create_date' WHERE  ma_sp='$ma_sp''";
+
+        $this->connect()->exec($sql);
+        echo "cập nhật thành công";
+    }
     public function showListproduct()
     {
         $sql = "select * from product";

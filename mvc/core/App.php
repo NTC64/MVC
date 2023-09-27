@@ -2,8 +2,8 @@
 //app.php gọi controller, models, views trong app
 class App
 {
-	protected $controller = "product";
-	protected $action = "getProductID";
+	protected $controller;
+	protected $action;
 	protected $params;
 	//lớp có 1 hàm mặc định là _contruct. khi chạy lớp App nó mặc định gọi hàm __contruct
 	function __construct()

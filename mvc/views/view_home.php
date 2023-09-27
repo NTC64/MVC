@@ -1,5 +1,5 @@
 <?php
-$obj = new home;
+$obj = new product;
 $obj->showlist();
 ?>
 

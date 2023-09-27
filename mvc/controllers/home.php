@@ -21,10 +21,4 @@ class Home extends Controller
 		header("Refresh: 0.0001 ; url=http://localhost/mvc_lab3/home");
 	}
 	/*quanlydanhmucsanpham*/
-	public function showlist()
-	{
-		$obj = $this->model("productModel");
-		$data = $obj->showListproduct();
-		$this->view("view_home", $data);
-	}
 }
