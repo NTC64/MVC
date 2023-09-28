@@ -14,11 +14,11 @@ if (isset($_POST['btnsave'])) {
 
             <tr>
                 <td> Mã loại sản phẩm:</td>
-                <td> <input type="text" name="txt_maloaisp" id=""></td>
+                <td> <input type="text" name="txt_maloaisp" id="" <?php echo isset($data["data2"][0]["ma_loaisp"]) ? $data["data2"][0]["ma_loaisp"] : $value['ma_loaisp'] ?>></td>
             </tr>
             <tr>
                 <td> Tên loại sản phẩm:</td>
-                <td> <input type="text" name="txt_tenloaisp" id=""></td>
+                <td> <input type="text" name="txt_tenloaisp" id="" <?php echo isset($data["data2"][0]["tenloaisp"]) ? $data["data2"][0]["tenloaisp"] : $value['ma_loaisp'] ?>></td>
             </tr>
             <tr>
                 <td> Mô tả sản phẩm:</td>
@@ -43,13 +43,13 @@ if (isset($_POST['btnsave'])) {
         </tr>
         <tr>
             <?php
-            foreach ($data as $key => $value) {  ?>
+            foreach ($data["data1"] as $key => $value) {  ?>
         <tr>
             <td><?php echo $value['ma_loaisp'] ?></td>
             <td><?php echo $value['ten_loaisp'] ?></td>
             <td><?php echo $value['mota_loaisp'] ?></td>
-            <td><a href="home/delete/<?php echo $value['ma_loaisp']; ?>">Delete</a></td>
-            <td><a href="home/show/<?php echo $value['ma_loaisp']; ?>">Edit</a></td>
+            <td><a href="<?php echo (url); ?>/home/delete/<?php echo $value['ma_loaisp']; ?>">Delete</a></td>
+            <td><a href="<?php echo (url); ?>/home/getProducttype/<?php echo $value['ma_loaisp']; ?>">Edit</a></td>
 
         </tr>
     <?php

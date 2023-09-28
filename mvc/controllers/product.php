@@ -48,4 +48,10 @@ class product extends Controller
           $obj->inserProduct($ma_loaisp, $ma_sp, $tensp, $hinhanh, $dongia, $soluong, $khuyenmai, $create_date);
           header("Location: /mvc_lab3/product/getProductID"); // Chú ý: Dùng "Location" để điều hướng đến trang khác.
      }
+     public function update($ma_loaisp, $ma_sp, $tensp, $hinhanh, $dongia, $soluong, $khuyenmai, $create_date)
+     {
+          $obj = $this->model("productModel");
+          $obj->updateProduct($ma_loaisp, $ma_sp, $tensp, $hinhanh, $dongia, $soluong, $khuyenmai, $create_date);
+          header("Location: /mvc_lab3/product/getProductID"); // Chú ý: Dùng "Location" để điều hướng đến trang khác.
+     }
 }

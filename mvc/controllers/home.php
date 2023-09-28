@@ -18,7 +18,18 @@ class Home extends Controller
 	{
 		$obj = $this->model("productModel");
 		$obj->deleteproductype($ma_loaisp);
-		header("Refresh: 0.0001 ; url=http://localhost/mvc_lab3/home");
+		header("Location:" . url . "/home/show");
+	}
+	function getProducttype($ma_loaisp)
+	{
+		$obj = $this->model("productModel");
+		$data1 = $obj->showProducttype();
+		$data2 = $obj->getProducttype($ma_loaisp);
+		$data = array(
+			"data1" => $data1,
+			"data2" => $data2
+		);
+		$this->view("view_AdproductType", $data);
 	}
 	/*quanlydanhmucsanpham*/
 }

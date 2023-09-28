@@ -12,6 +12,8 @@ $txt_khuyenmai = isset($_POST["txt_khuyenmai"]) ? $_POST["txt_khuyenmai"] : "";
 $create_date = date("d/m/y");
 if (isset($_POST["btn_save"])) {
     $obj->insert($ma_loaisp, $txt_masp, $txt_tensp, $txt_hinhanh, $txt_dongia, $txt_soluong, $txt_khuyenmai, $create_date);
+} elseif (isset($_POST["btn_edit"])) {
+    $obj->update($ma_loaisp, $txt_masp, $txt_tensp, $txt_hinhanh, $txt_dongia, $txt_soluong, $txt_khuyenmai, $create_date);
 }
 ?>
 <form action="" method="post" enctype="multipart/form-data">
@@ -22,8 +24,8 @@ if (isset($_POST["btn_save"])) {
                 <select name="dropdow">
                     <?php
                     foreach ($data["data2"] as $key => $value) {  ?>
-                        <option value="<?php echo $value['ma_loaisp'] ?>">
-                            <?php echo $value['ma_loaisp'] ?>
+                        <option value="<?php echo isset($data["data3"][0]["ma_loaisp"]) ? $data["data3"][0]["ma_sp"] : $value['ma_loaisp'] ?>">
+                            <?php echo isset($data["data3"][0]["ma_loaisp"]) ? $data["data3"][0]["ma_loaisp"] : $value['ma_loaisp'] ?>
                         </option>
                     <?php } ?>
                 </select>
@@ -32,49 +34,49 @@ if (isset($_POST["btn_save"])) {
         <tr>
             <td>Mã sản phẩm</td>
             <td>
-
-                <input type="text" name="txt_masp" id="" value="<?php echo $data["data3"][0]["ma_sp"] ?>">
-
+                <input type="text" name="txt_masp" id="" value="<?php echo isset($data["data3"][0]["ma_sp"]) ? $data["data3"][0]["ma_sp"] : ''; ?>">
             </td>
         </tr>
         <tr>
             <td>Tên sản phẩm</td>
             <td>
-                <input type="text" name="txt_tensp" id="" value="<?php echo $data["data3"][0]["tensp"] ?>">
+                <input type="text" name="txt_tensp" id="" value="<?php echo isset($data["data3"][0]["tensp"]) ? $data["data3"][0]["tensp"] : ''; ?>">
             </td>
         </tr>
         <tr>
             <td>Hình ảnh</td>
             <td>
-                <?php if (isset($_FILES['fileUpload'])) {
+                <?php
+                if (isset($_FILES['fileUpload'])) {
                     $file_name = $_FILES['fileUpload']['name'];
                     $file_tmp = $_FILES['fileUpload']['tmp_name'];
                     if (empty($errors) == true) {
                         move_uploaded_file($file_tmp, "public/images/" . $file_name);
                     }
-                } ?>
-                <input type="file" name="fileUpload" id="uploadimage" />
-            </td>
+                }
+                ?>
+                <input type="file" name="fileUpload" id="uploadimage" value="<?php echo isset($data["data3"][0]["hinhanh"]) ? $data["data3"][0]["hinhanh"] : ''; ?>" />
             </td>
         </tr>
         <tr>
             <td>Đơn giá</td>
             <td>
-                <input type="text" name="txt_dongia" id="">
+                <input type="text" name="txt_dongia" id="" value="<?php echo isset($data["data3"][0]["dongia"]) ? $data["data3"][0]["dongia"] : ''; ?>">
             </td>
         </tr>
         <tr>
             <td>Số lượng</td>
             <td>
-                <input type="text" name="txt_soluong" id="">
+                <input type="text" name="txt_soluong" id="" value="<?php echo isset($data["data3"][0]["soluong"]) ? $data["data3"][0]["soluong"] : ''; ?>">
             </td>
         </tr>
         <tr>
             <td>Khuyến mại</td>
             <td>
-                <input type="text" name="txt_khuyenmai" id="">
+                <input type="text" name="txt_khuyenmai" id="" value="<?php echo isset($data["data3"][0]["khuyenmai"]) ? $data["data3"][0]["khuyenmai"] : ''; ?>">
             </td>
         </tr>
+
         <tr>
             <td>Ngày nhập hàng</td>
             <td><?php echo date('d/m/y') ?></td>
@@ -82,6 +84,8 @@ if (isset($_POST["btn_save"])) {
         <tr>
             <td colspan="2">
                 <input type="submit" value="Lưu" name="btn_save">
+                <input type="submit" value="Sửa" name="btn_edit">
+
             </td>
         </tr>
         <table border="1">
@@ -105,7 +109,7 @@ if (isset($_POST["btn_save"])) {
                         <td><?php echo $value['ma_loaisp'] ?></td>
                         <td><?php echo $value['ma_sp'] ?></td>
                         <td><?php echo $value['tensp'] ?></td>
-                        <td><img src="../public/images/<?php echo $value['hinhanh'] ?>" width="50"></td>
+                        <td><img src="<?php echo (url); ?>/public/images/<?php echo $value['hinhanh'] ?>" width="50"></td>
                         <td><?php echo $value['dongia'] ?></td>
                         <td><?php echo $value['soluong'] ?></td>
                         <td><?php echo $value['khuyenmai'] ?></td>
