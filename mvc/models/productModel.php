@@ -76,7 +76,12 @@ class productModel  extends Database
         $this->connect()->exec($sql);
         echo "Cập nhật thành công";
     }
-
+    public function updateProducttype($ma_loaisp, $ten_loaisp, $mota_loaisp)
+    {
+        $sql = "UPDATE adproducttype SET ten_loaisp='$ten_loaisp', mota_loaisp='$mota_loaisp' WHERE ma_loaisp='$ma_loaisp'";
+        $this->connect()->exec($sql);
+        echo "Cập nhật thành công";
+    }
     public function showListproduct()
     {
         $sql = "select * from product";

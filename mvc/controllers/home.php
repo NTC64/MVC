@@ -5,7 +5,7 @@ class Home extends Controller
 	function show()
 	{
 		$obj = $this->model("productModel");
-		$data = $obj->showProducttype();
+		$data = array("data1" => $obj->showProducttype());
 		$this->view("view_AdproductType", $data);
 	}
 	function insert($ma_loaisp, $ten_loaisp, $mota_loaisp)
@@ -30,6 +30,12 @@ class Home extends Controller
 			"data2" => $data2
 		);
 		$this->view("view_AdproductType", $data);
+	}
+	public function update($ma_loaisp, $ten_loaisp, $mota_loaisp)
+	{
+		$obj = $this->model("productModel");
+		$obj->updateProducttype($ma_loaisp, $ten_loaisp, $mota_loaisp);
+		header("Location: /mvc_lab3/home/show"); // Chú ý: Dùng "Location" để điều hướng đến trang khác.
 	}
 	/*quanlydanhmucsanpham*/
 }
