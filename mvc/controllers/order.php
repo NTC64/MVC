@@ -47,8 +47,12 @@ class order extends Controller
         header("refresh:0.001; url=http://localhost/mvc_lab3/order/getlistAddtocart");
     }
     //cap nhap so luong san pham cho gio hang
-    public function updateAddtocart($ma_sp)
+    public function updateAddtocart($ma_sp, $newQuantity)
     {
+
+        if (isset($_SESSION['cart'][$ma_sp])) {
+            $_SESSION['cart'][$ma_sp]['qty'] = $newQuantity;
+        }
     }
     /*luu thông tin don hang, khach hanh vo database
     customer(makh,tenkh,dienthoai,email,diachi_lienhe, diachigiaohang)
