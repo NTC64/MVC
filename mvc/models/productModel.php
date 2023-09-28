@@ -56,6 +56,26 @@ class productModel  extends Database
             // var_dump($data[]);
             return $data;
     }
+    public function getProductDetail($ma_sp)
+    {
+        $sql = "SELECT * FROM product WHERE ma_sp='$ma_sp'";
+        $stms = $this->connect()->query($sql);
+        $stm = $stms->fetch();
+        return $stm;
+    }
+    // public function getProductDetail($ma_sp)
+    // {
+    //     $sql = "select * from product where ma_sp='$ma_sp'";
+    //     $stm = $this->connect()->query($sql);
+    //     while ($row = $stm->fetch()) {
+    //         $data[] = $row;
+    //     }
+    //     if (empty($data))
+    //         echo ("");
+    //     else
+    //         // var_dump($data[]);
+    //         return $data;
+    // }
     public function getProduct($ma_sp)
     {
         $sql = "select * from product where ma_sp='$ma_sp'";

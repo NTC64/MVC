@@ -11,6 +11,8 @@ $obj->showlist();
             <th>Đơn giá</th>
             <th>Khuyến mãi</th>
             <th>Chi tiết</th>
+            <th>Thêm vào giỏ hàng</th>
+
         </tr>
     </thead>
     <tbody>
@@ -28,6 +30,8 @@ $obj->showlist();
 
 
                 <td><a href="home/getproductID/<?php echo $value['ma_sp']; ?>">Chi tiết</a></td>
+                <td><a href="<?php echo url; ?>/order/addtocart/<?php echo $value['ma_sp']; ?>">Thêm</a></td>
+
             </tr>
         <?php endforeach; ?>
     </tbody>
