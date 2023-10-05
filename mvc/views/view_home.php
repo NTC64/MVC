@@ -1,4 +1,5 @@
 <?php
+
 $obj = new product;
 $obj->showlist();
 ?>
@@ -18,18 +19,20 @@ $obj->showlist();
     <tbody>
         <?php foreach ($data as $key => $value) : ?>
             <tr>
-                <td><img src="../public/images/<?php echo $value['hinhanh'] ?>" width="50"></td>
+                <td><img src="<?php echo url; ?>/public/images/<?php echo $value['hinhanh'] ?>" width="50"></td>
                 <td><?php echo $value['tensp']; ?></td>
 
                 <?php if ($value["khuyenmai"] > 0) : ?>
-                    <td><del><?php echo $value['dongia']; ?></del><br></td>
-                    <td><?php echo $value["khuyenmai"]; ?></td>
+                    <td><del><?php echo $value['dongia']; ?> VND</del></td>
+                    <td><?php echo $value["khuyenmai"]; ?> VND</td>
                 <?php else : ?>
-                    <td> <?php echo $value['dongia']; ?></td>
+                    <td> <?php echo $value['dongia']; ?> VND</td>
+                    <td> 0 VND</td>
+
                 <?php endif; ?>
 
 
-                <td><a href="home/getproductID/<?php echo $value['ma_sp']; ?>">Chi tiết</a></td>
+                <td><a href="<?php echo url; ?>/product/getdetail/<?php echo $value['ma_sp']; ?>">Chi tiết</a></td>
                 <td><a href="<?php echo url; ?>/order/addtocart/<?php echo $value['ma_sp']; ?>">Thêm</a></td>
 
             </tr>

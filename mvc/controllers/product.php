@@ -1,5 +1,5 @@
 <?php
-class product extends Controller
+class product extends controller
 {
      public function showlist()
      {
@@ -27,6 +27,13 @@ class product extends Controller
           $obj = $this->model("productModel");
           $obj->deleteproduct($ma_sp);
           header("Location: /mvc_lab3/product/getProductID");
+     }
+     function getdetail($ma_sp)
+     {
+          $obj = $this->model("productModel");
+          $data = $obj->getProductDetail($ma_sp);
+
+          $this->view("view_Dtproduct", $data);
      }
      function getProduct($ma_sp)
      {

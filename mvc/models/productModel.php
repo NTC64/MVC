@@ -1,4 +1,5 @@
 <?php
+
 class productModel  extends Database
 {
     // hiển thị dữ liệu trong bảng adproducttype
@@ -107,6 +108,81 @@ class productModel  extends Database
         $sql = "select * from product";
         $stm = $this->connect()->query($sql);
         while ($row = $stm->fetch()) {
+            $data[] = $row;
+        }
+        if (empty($data))
+            echo ("");
+        else
+            // var_dump($data[]);
+            return $data;
+    }
+
+    public function inserttocart($tenkh, $dienthoai, $email, $diachi_lienhe, $diachi_giaohang, $tongtien)
+    {
+        // Step 1: Insert data into the 'customer' table
+        $sql = "INSERT INTO customer (tenkh, dienthoai, email, diachi_lienhe, diachi_giaohang) 
+                VALUES ('$tenkh', '$dienthoai', '$email', '$diachi_lienhe', '$diachi_giaohang')";
+        $this->connect()->exec($sql);
+        $sql = "SELECT MAX(makh) FROM customer";
+        $customerId = $this->connect()->query($sql);
+        $customerId = $customerId->fetch();
+        $date = date('y/m/d');
+        $makh =  $customerId['MAX(makh)'];
+        // Step 2: Insert data into the 'ordersp' table
+        $sql = "INSERT INTO ordersp (date, tongtien, makh) VALUES ('$date', '$tongtien', '$makh')";
+        $this->connect()->exec($sql);
+        $sql = "SELECT MAX(mahd) FROM ordersp";
+        $orderId = $this->connect()->query($sql);
+        $orderId = $orderId->fetch();
+        $mahd =  $orderId['MAX(mahd)'];
+        // Step 3: Insert data into the 'orderdetail' table for each item in the order
+        foreach ($_SESSION['cart'] as $k => $v) {
+            $ma_sp = $v['ma_sp']; // Get the product ID
+            $tensp = $v['tensp'];
+            $quantity = $v['qty']; // Get the quantity
+            $dongia = $v['dongia'];
+            $khuyenmai = $v['khuyenmai'];
+
+            // Step 4: Insert data into the 'orderdetail' table
+            $sql = "INSERT INTO orderdetail (mahd, ma_sp, tensp, soluong, dongia, khuyenmai) 
+                    VALUES ('$mahd', '$ma_sp', '$tensp', '$quantity', '$dongia', '$khuyenmai')";
+            $this->connect()->exec($sql);
+        }
+    }
+    public function showListOrder()
+    {
+        $sql = "select * from `ordersp` join `customer` on `ordersp`.`makh`=`customer`.`makh`";
+        $stm = $this->connect()->query($sql);
+        while ($row = $stm->fetch()) {
+
+            $data[] = $row;
+        }
+        if (empty($data))
+            echo ("");
+        else
+            // var_dump($data[]);
+            return $data;
+    }
+    public function showDetailOrder($mahd, $makh)
+    {
+        $sql = "select * from `ordersp` join `orderdetail` on `ordersp`.`mahd`=`orderdetail`.`mahd` where `ordersp`.`mahd`='$mahd' and `ordersp`.`makh`=$makh";
+        $stm = $this->connect()->query($sql);
+        while ($row = $stm->fetch()) {
+
+            $data[] = $row;
+        }
+        if (empty($data))
+            echo ("");
+        else
+            // var_dump($data[]);
+            return $data;
+    }
+    public function showcustomer()
+    {
+        $sql = "Select * From customer";
+        $stm = $this->connect()->query($sql);
+        while ($row = $stm->fetch()) {
+
             $data[] = $row;
         }
         if (empty($data))

@@ -1,7 +1,10 @@
 <?php
 class Home extends Controller
 {
-
+	function showIndex()
+	{
+		$this->view("view_index");
+	}
 	function show()
 	{
 		$obj = $this->model("productModel");

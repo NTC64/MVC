@@ -59,4 +59,22 @@ class order extends Controller
     oderDetail(mahd,masp,tensp,soluong,dongia,khuyenmai)
     oder(maHD,date_create,tongtien,makh)
     */
+    public function insertCart($tenkh, $dienthoai, $email, $diachi_lienhe, $diachi_giaohang, $tongtien)
+    {
+
+        $obj = $this->model("productModel");
+        $data = $obj->inserttocart($tenkh, $dienthoai, $email, $diachi_lienhe, $diachi_giaohang, $tongtien);
+    }
+    public function showlistorder()
+    {
+        $obj = $this->model("productModel");
+        $data = $obj->showListOrder();
+        $this->view("view_orders", $data);
+    }
+    public function showdetailorder($mahd, $makh)
+    {
+        $obj = $this->model("productModel");
+        $data = $obj->showDetailOrder($mahd, $makh);
+        $this->view("view_dtorder", $data);
+    }
 }
