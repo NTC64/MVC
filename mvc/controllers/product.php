@@ -5,7 +5,9 @@ class product extends controller
      {
           $obj = $this->model("productModel");
           $data = $obj->showListproduct();
-          $this->view("view_home", $data);
+          $this->view("client/view_index");
+
+          $this->view("client/view_home", $data);
      }
 
      public function getProductID()
@@ -20,20 +22,23 @@ class product extends controller
           );
 
           // Truyền biến chứa cả hai dữ liệu vào hàm view
-          $this->view("view_Adproduct", $data);
+          $this->view("client/view_index");
+
+          $this->view("admin/view_Adproduct", $data);
      }
      function delete($ma_sp)
      {
           $obj = $this->model("productModel");
           $obj->deleteproduct($ma_sp);
-          header("Location: /mvc_lab3/product/getProductID");
+          header("Location: " . url . "/product/getProductID");
      }
      function getdetail($ma_sp)
      {
           $obj = $this->model("productModel");
           $data = $obj->getProductDetail($ma_sp);
+          $this->view("client/view_index");
 
-          $this->view("view_Dtproduct", $data);
+          $this->view("admin/view_Dtproduct", $data);
      }
      function getProduct($ma_sp)
      {
@@ -47,18 +52,20 @@ class product extends controller
                "data3" => $data3
 
           );
-          $this->view("view_Adproduct", $data);
+          $this->view("client/view_index");
+
+          $this->view("admin/view_Adproduct", $data);
      }
      public function insert($ma_loaisp, $ma_sp, $tensp, $hinhanh, $dongia, $soluong, $khuyenmai, $create_date)
      {
           $obj = $this->model("productModel");
           $obj->inserProduct($ma_loaisp, $ma_sp, $tensp, $hinhanh, $dongia, $soluong, $khuyenmai, $create_date);
-          header("Location: /mvc_lab3/product/getProductID"); // Chú ý: Dùng "Location" để điều hướng đến trang khác.
+          header("Location:" . url . "/product/getProductID"); // Chú ý: Dùng "Location" để điều hướng đến trang khác.
      }
      public function update($ma_loaisp, $ma_sp, $tensp, $hinhanh, $dongia, $soluong, $khuyenmai, $create_date)
      {
           $obj = $this->model("productModel");
           $obj->updateProduct($ma_loaisp, $ma_sp, $tensp, $hinhanh, $dongia, $soluong, $khuyenmai, $create_date);
-          header("Location: /mvc_lab3/product/getProductID"); // Chú ý: Dùng "Location" để điều hướng đến trang khác.
+          header("Location:" . url . "/product/getProductID"); // Chú ý: Dùng "Location" để điều hướng đến trang khác.
      }
 }

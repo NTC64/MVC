@@ -3,12 +3,13 @@ class Home extends Controller
 {
 	function showIndex()
 	{
-		$this->view("view_index");
+		$this->view("client/view_index");
 	}
 	function show()
 	{
 		$obj = $this->model("productModel");
 		$data = array("data1" => $obj->showProducttype());
+		$this->view("client/view_index");
 		$this->view("admin/view_AdproductType", $data);
 	}
 	function insert($ma_loaisp, $ten_loaisp, $mota_loaisp)
@@ -32,13 +33,15 @@ class Home extends Controller
 			"data1" => $data1,
 			"data2" => $data2
 		);
-		$this->view("view_AdproductType", $data);
+		$this->view("client/view_index");
+
+		$this->view("admin/view_AdproductType", $data);
 	}
 	public function update($ma_loaisp, $ten_loaisp, $mota_loaisp)
 	{
 		$obj = $this->model("productModel");
 		$obj->updateProducttype($ma_loaisp, $ten_loaisp, $mota_loaisp);
-		header("Location: /mvc_lab3/home/show"); // Chú ý: Dùng "Location" để điều hướng đến trang khác.
+		header("Location:" . url . "/home/show"); // Chú ý: Dùng "Location" để điều hướng đến trang khác.
 	}
 	/*quanlydanhmucsanpham*/
 }
