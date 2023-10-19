@@ -2,7 +2,7 @@
 $obj = new order;
 ?>
 <h1>Chi tiết sản phẩm</h1>
-<table border="1">
+<table class="table table-borderless">
     <thead>
         <tr>
             <th>Tên sản phẩm</th>

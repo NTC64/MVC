@@ -83,4 +83,11 @@ class order extends Controller
 
         $this->view("client/view_dtorder", $data);
     }
+
+    public function updatedetailorder($mahd, $makh)
+    {
+        $obj = $this->model("productModel");
+        $data = $obj->updateDetailOrder($mahd, $makh);
+        header("refresh:0.001; url=" . url . "/order/showlistorder");
+    }
 }

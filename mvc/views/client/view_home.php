@@ -10,13 +10,13 @@ $obj->showlist();
     }
 
     .product .card {
-        margin: 0 12px;
+        margin: 12px 12px;
     }
 </style>
 <div class="product">
     <?php foreach ($data as $key => $value) : ?>
         <div class="card" style="width:400px">
-            <img class="card-img-top" src="<?php echo url; ?>/public/images/<?php echo $value['hinhanh'] ?>" alt="Card image">
+            <img class="card-img-top" style="height:300px;object-fit: cover;" src="<?php echo url; ?>/public/images/<?php echo $value['hinhanh'] ?>" alt="Card image">
             <div class="card-body">
                 <h4 class="card-title"><?php echo $value['tensp']; ?></h4>
                 <p class="card-text"><?php if ($value["khuyenmai"] > 0) : ?>

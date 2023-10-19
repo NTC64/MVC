@@ -13,6 +13,7 @@ $obj->showlistorder();
             <th>Số điện thoại</th>
             <th>Email</th>
             <th>Tổng giá</th>
+            <th>Trạng thái</th>
             <th>Chi tiết</th>
 
         </tr>
@@ -30,7 +31,10 @@ $obj->showlistorder();
                 <td><?php echo $v['dienthoai'] ?></td>
                 <td><?php echo $v['email'] ?></td>
                 <td><?php echo $v['tongtien'] ?></td>
-                <td><a href="<?php echo url; ?>/order/showdetailorder/<?php echo $v['mahd'] ?>/<?php echo $v['makh'] ?>">Chi tiết</a></td>
+                <td><?php echo $v['status'] ?></td>
+                <td><a href="<?php echo url; ?>/order/showdetailorder/<?php echo $v['mahd'] ?>/<?php echo $v['makh'] ?>">Chi tiết</a>
+                    <a href="<?php echo url; ?>/order/updatedetailorder/<?php echo $v['mahd'] ?>/<?php echo $v['makh'] ?>">Sửa</a>
+                </td>
 
             </tr>
         <?php
