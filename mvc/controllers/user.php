@@ -5,7 +5,7 @@ class User extends Controller
     function show()
     {
         $obj = $this->model("productModel");
-        $data =  $obj->showcustomer();
+        $data = $obj->showcustomer();
         $this->view("client/view_index");
 
         $this->view("admin/view_customer", $data);
@@ -18,7 +18,9 @@ class User extends Controller
         $data = $obj->getCustomerByID($makh);
         $this->view("client/view_updatecustomer", $data);
     }
-    public function updates() {
+
+    public function updates()
+    {
         $data = [
             'makh' => $_POST['makh'],
             'tenkh' => $_POST['tenkh'],
@@ -37,10 +39,7 @@ class User extends Controller
         //get makh from url
         $id = $makh;
         $obj = $this->model("productModel");
-        if ($obj->deleteCustomerByID($id) == TRUE) {
-            header("Location: /MVC/user/show");
-        } else {
-            echo "<script>alert('Xóa không thành công')</script>";
-        }
+        $obj->deleteCustomerByID($id);
+        header("Location: /MVC/user/show");
     }
 }

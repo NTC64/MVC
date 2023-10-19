@@ -223,4 +223,42 @@ class productModel  extends Database
             return FALSE;
         }
     }
+    public function reportByWeek() {
+        $sql = "SELECT * FROM ordersp WHERE date >= DATE_SUB(NOW(), INTERVAL 1 WEEK)";
+        $stm = $this->connect()->query($sql);
+        while ($row = $stm->fetch()) {
+
+            $data[] = $row;
+        }
+        if (empty($data))
+            echo ("");
+        else
+            // var_dump($data[]);
+            return $data;
+    }
+    public function reportByMonth() {
+        $sql = "SELECT * FROM ordersp WHERE date >= DATE_SUB(NOW(), INTERVAL 1 MONTH)";
+        $stm = $this->connect()->query($sql);
+        while ($row = $stm->fetch()) {
+            $data[] = $row;
+        }
+        if (empty($data))
+            echo ("");
+        else
+            // var_dump($data[]);
+            return $data;
+    }
+    public function reportByYear() {
+        $sql = "SELECT * FROM ordersp WHERE date >= DATE_SUB(NOW(), INTERVAL 1 YEAR)";
+        $stm = $this->connect()->query($sql);
+        while ($row = $stm->fetch()) {
+
+            $data[] = $row;
+        }
+        if (empty($data))
+            echo ("");
+        else
+            // var_dump($data[]);
+            return $data;
+    }
 }
