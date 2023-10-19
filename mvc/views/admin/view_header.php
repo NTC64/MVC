@@ -19,9 +19,6 @@
                 <a class="nav-link" href="<?php echo url; ?>/product/showlist">Sản phẩm</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo url; ?>/order/getlistAddtocart">Giỏ hàng</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="<?php echo url; ?>/product/getProductID">Quản lý sản phẩm</a>
             </li>
             <li class="nav-item">
@@ -34,7 +31,7 @@
                 <a class="nav-link" href="<?php echo url; ?>/order/showlistorder">Quản lý đơn hàng</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo url; ?>/order/report">Báo cáo</a>
+                <a class="nav-link" href="<?php echo url; ?>/order/reportBy">Báo cáo</a>
             </li>
         </ul>
     </header>

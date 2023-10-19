@@ -5,6 +5,10 @@ class Home extends Controller
 	{
 		$this->view("client/view_index");
 	}
+	function showadmin()
+	{
+		$this->view("client/view_header");
+	}
 	function show()
 	{
 		$obj = $this->model("productModel");
