@@ -33,7 +33,7 @@ if (isset($_POST['btnsave'])) {
 
             <tr>
                 <td>
-                    <input type="submit" value="Lưu" class="btn btn-primary" name="btnsave">
+                    <input type="submit" value="Tạo mới" class="btn btn-primary" name="btnsave">
                     <input type="submit" value="Sửa" class="btn btn-primary" name="btnedit">
 
                 </td>
