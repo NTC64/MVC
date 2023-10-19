@@ -3,7 +3,7 @@ $obj = new order;
 $obj->showlistorder();
 ?>
 <h3>Quản lý đơn hàng</h3>
-<table border="1">
+<table class="table table-borderless">
     <thead>
         <tr>
             <th>Mã đơn hàng</th>

@@ -84,12 +84,12 @@ if (isset($_POST["btn_save"])) {
         </tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="Lưu" name="btn_save">
-                <input type="submit" value="Sửa" name="btn_edit">
+                <input type="submit" class="btn btn-primary" value="Lưu" name="btn_save">
+                <input type="submit" value="Sửa" class="btn btn-primary" name="btn_edit">
 
             </td>
         </tr>
-        <table border="1">
+        <table class="table table-borderless">
             <thead>
                 <tr>
                     <th>Mã loại sp</th>

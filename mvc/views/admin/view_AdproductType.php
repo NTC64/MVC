@@ -33,37 +33,39 @@ if (isset($_POST['btnsave'])) {
 
             <tr>
                 <td>
-                    <input type="submit" value="Lưu" name="btnsave">
-                    <input type="submit" value="Sửa" name="btnedit">
+                    <input type="submit" value="Lưu" class="btn btn-primary" name="btnsave">
+                    <input type="submit" value="Sửa" class="btn btn-primary" name="btnedit">
 
                 </td>
 
             </tr>
     </table>
-    <table border="1">
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <td>Mã loại sp</td>
+                <td>Tên loại SP</td>
+                <td>Mô tả loại SP</td>
+                <td>Xóa</td>
+                <td>Sửa</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <?php
+                foreach ($data["data1"] as $key => $value) {  ?>
+            <tr>
+                <td><?php echo $value['ma_loaisp'] ?></td>
+                <td><?php echo $value['ten_loaisp'] ?></td>
+                <td><?php echo $value['mota_loaisp'] ?></td>
+                <td><a href="<?php echo (url); ?>/home/delete/<?php echo $value['ma_loaisp']; ?>">Delete</a></td>
+                <td><a href="<?php echo (url); ?>/home/getProducttype/<?php echo $value['ma_loaisp']; ?>">Edit</a></td>
 
-        <tr>
-            <td>Mã loại sp</td>
-            <td>Tên loại SP</td>
-            <td>Mô tả loại SP</td>
-            <td>Xóa</td>
-            <td>Sửa</td>
+            </tr>
+        <?php
+                }
+        ?>
         </tr>
-        <tr>
-            <?php
-            foreach ($data["data1"] as $key => $value) {  ?>
-        <tr>
-            <td><?php echo $value['ma_loaisp'] ?></td>
-            <td><?php echo $value['ten_loaisp'] ?></td>
-            <td><?php echo $value['mota_loaisp'] ?></td>
-            <td><a href="<?php echo (url); ?>/home/delete/<?php echo $value['ma_loaisp']; ?>">Delete</a></td>
-            <td><a href="<?php echo (url); ?>/home/getProducttype/<?php echo $value['ma_loaisp']; ?>">Edit</a></td>
-
-        </tr>
-    <?php
-            }
-    ?>
-    </tr>
-    </tbody>
+        </tbody>
     </table>
 </form>

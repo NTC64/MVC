@@ -17,6 +17,6 @@ $obj = new product;
             <h3>Khuyến mại: <?php echo $data['dongia']; ?> VND</h3>
         <?php endif; ?>
         <p> Số lượng sản phẩm: <?php echo $data['soluong']; ?> </p>
-        <a href="<?php echo url; ?>/order/addtocart/<?php echo $data['ma_sp']; ?>"><button>Thêm vào giỏ hàng</button></a>
+        <a href="<?php echo url; ?>/order/addtocart/<?php echo $data['ma_sp']; ?>" class="btn btn-primary">Thêm vào giỏ hàng</a>
     </div>
 </div>

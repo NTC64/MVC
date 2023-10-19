@@ -51,52 +51,57 @@ if (isset($_POST['bntupdate'])) {
         </tr>
         <tr>
 
-            <td><input type="submit" name="buy" id="buy" value="Đặt hàng"></td>
+            <td><input type="submit" name="buy" id="buy" value="Đặt hàng" class="btn btn-primary"></td>
         </tr>
     </table>
 
     <br>
     <br>
-    <table border="1">
-        <tr>
-            <td>Mã sản phẩm</td>
-            <td>Tên sản phẩm</td>
-            <td>Hình ảnh</td>
-            <td>Số lượng</td>
-            <td>Đơn giá</td>
-            <td>Khuyến mại</td>
-            <td>Xóa</td>
-        </tr>
-        <?php
-        $tongtien = 0;
-        foreach ($_SESSION['cart'] as $k => $v) {
-        ?>
+    <table class="table table-borderless">
+        <thead>
             <tr>
-                <td><?php echo $v['ma_sp'] ?></td>
-                <td><?php echo $v['tensp'] ?></td>
-                <td><img src="<?php echo url; ?>/public/images/<?php echo $v['hinhanh'] ?>" alt="" width="50"></td>
-                <td>
-                    <input type="number" name="quantity[<?php echo $v['ma_sp'] ?>]" id="quantity_<?php echo $v['ma_sp'] ?>" value="<?php echo $v['qty'] ?>" style="width: 50px; ">
-                </td>
-                <?php if ($v["khuyenmai"] > 0) : ?>
-                    <td> <del><?php echo $v['dongia']; ?> VND</del></td>
-                    <td><?php echo $v['khuyenmai'];
-                        $tongtien += ($v['khuyenmai'] * $v['qty']); ?> VND</td>
-                <?php else : ?>
-                    <td><?php echo $v['dongia'];
-                        $tongtien += ($v['dongia'] * $v['qty']);  ?> VND</td>
-                    <td> 0 VND</td>
-                <?php endif; ?>
-
-                <td><a href="<?php echo url; ?>/order/deleteAddtocart/<?php echo $v['ma_sp'] ?>">Xóa</a></td>
+                <td>Mã sản phẩm</td>
+                <td>Tên sản phẩm</td>
+                <td>Hình ảnh</td>
+                <td>Số lượng</td>
+                <td>Đơn giá</td>
+                <td>Khuyến mại</td>
+                <td>Xóa</td>
             </tr>
-        <?php
-        }
-        ?>
+        </thead>
+        <tbody>
+            <?php
+            $tongtien = 0;
+            foreach ($_SESSION['cart'] as $k => $v) {
+            ?>
+                <tr>
+                    <td><?php echo $v['ma_sp'] ?></td>
+                    <td><?php echo $v['tensp'] ?></td>
+                    <td><img src="<?php echo url; ?>/public/images/<?php echo $v['hinhanh'] ?>" alt="" width="50"></td>
+                    <td>
+                        <input type="number" name="quantity[<?php echo $v['ma_sp'] ?>]" id="quantity_<?php echo $v['ma_sp'] ?>" value="<?php echo $v['qty'] ?>" style="width: 50px; ">
+                    </td>
+                    <?php if ($v["khuyenmai"] > 0) : ?>
+                        <td> <del><?php echo $v['dongia']; ?> VND</del></td>
+                        <td><?php echo $v['khuyenmai'];
+                            $tongtien += ($v['khuyenmai'] * $v['qty']); ?> VND</td>
+                    <?php else : ?>
+                        <td><?php echo $v['dongia'];
+                            $tongtien += ($v['dongia'] * $v['qty']);  ?> VND</td>
+                        <td> 0 VND</td>
+                    <?php endif; ?>
+
+                    <td><a href="<?php echo url; ?>/order/deleteAddtocart/<?php echo $v['ma_sp'] ?>">Xóa</a></td>
+                </tr>
+            <?php
+            }
+
+            ?>
+        <tbody>
     </table>
     <?php
 
     echo '<td?><h3>Tổng tiền:<input type="text" name="tongtien" value="' . $tongtien . '" readonly style="border:none;"></h3></td>';
     ?>
-    <input type="submit" value="Lưu sản phẩm vào giỏ hàng" name="bntupdate">
+    <input type="submit" value="Lưu sản phẩm vào giỏ hàng" class="btn btn-primary" name="bntupdate">
 </form>

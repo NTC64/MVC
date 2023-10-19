@@ -38,7 +38,7 @@ class product extends controller
           $data = $obj->getProductDetail($ma_sp);
           $this->view("client/view_index");
 
-          $this->view("admin/view_Dtproduct", $data);
+          $this->view("client/view_Dtproduct", $data);
      }
      function getProduct($ma_sp)
      {
