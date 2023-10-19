@@ -40,17 +40,19 @@ class App
 		echo $this->action."<br>";
 		print_r ($this->params)."<br>";*/
 
-		$this->params = $arr ? array_values($arr) : array();
-		call_user_func_array(array($this->controller, $this->action), $this->params);
+		$this->params = $arr ? array_values($arr) : [];
+		call_user_func_array([$this->controller, $this->action], $this->params);
 	}
 
 
 	function Urlprocess()
 	{
 		//lấy được url
-		if (isset($_GET["url"])) {
-			//return $u=$_GET["url"];
-			return explode("/", filter_var(trim($_GET["url"], "/")));
-		}
+        if (isset($_GET['url'])) {
+            $url = rtrim($_GET['url'], '/');
+            $url = filter_var($url, FILTER_SANITIZE_URL);
+            $url = explode('/', $url);
+            return $url;
+        }
 	}
 }

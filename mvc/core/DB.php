@@ -12,7 +12,7 @@ class Database
     // get the database connection
     public function connect()
     {
-        $dsn = "mysql:host=" . $this->host . ";port=3307;dbname=" . $this->dbname; // Thêm dấu hai chấm sau "host"
+        $dsn = "mysql:host=" . $this->host . ";port=3306;dbname=" . $this->dbname; // Thêm dấu hai chấm sau "host"
         $this->conn = new PDO($dsn, $this->user, $this->pwd);
         $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         return $this->conn;

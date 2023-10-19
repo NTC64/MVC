@@ -8,6 +8,8 @@
             <td>Email</td>
             <td>Địa chỉ liên hệ</td>
             <td>Địa chỉ giao hàng</td>
+            <td><a>Chỉnh sửa</a></td>
+            <td><a>Xoá</a></td>
         </tr>
         <tr>
             <?php
@@ -18,6 +20,8 @@
             <td><?php echo $value['email'] ?></td>
             <td><?php echo $value['diachi_lienhe'] ?></td>
             <td><?php echo $value['diachi_giaohang'] ?></td>
+            <td><a href="http://localhost:2002/MVC/user/update?makh=<?= $value['makh']; ?>">Edit</a></td>
+            <td><a href="http://localhost:2002/MVC/user/delete?makh=<?= $value['makh']; ?>">Delete</a></td>
         </tr>
     <?php
             }

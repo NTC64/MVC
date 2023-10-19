@@ -31,7 +31,7 @@ class order extends Controller
             $_SESSION['cart'][$ma_sp]['khuyenmai'] = $data['khuyenmai'];
             $_SESSION['cart'][$ma_sp]['soluong'] = $data['soluong'];
         }
-        header("refresh:0.001; url=http://localhost/mvc_lab3/order/getlistAddtocart");
+        header("refresh:0.001; url=http://localhost:2002/MVC/order/getlistAddtocart");
     }
     public function getlistAddtocart()
     {
@@ -44,7 +44,7 @@ class order extends Controller
         if (array_key_exists($ma_sp, $_SESSION['cart'])) {
             unset($_SESSION['cart'][$ma_sp]);
         }
-        header("refresh:0.001; url=http://localhost/mvc_lab3/order/getlistAddtocart");
+        header("refresh:0.001; url=http://localhost:2002/MVC/order/getlistAddtocart");
     }
     //cap nhap so luong san pham cho gio hang
     public function updateAddtocart($ma_sp, $newQuantity)

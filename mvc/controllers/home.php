@@ -9,13 +9,13 @@ class Home extends Controller
 	{
 		$obj = $this->model("productModel");
 		$data = array("data1" => $obj->showProducttype());
-		$this->view("view_AdproductType", $data);
+		$this->view("admin/view_AdproductType", $data);
 	}
 	function insert($ma_loaisp, $ten_loaisp, $mota_loaisp)
 	{
 		$obj = $this->model("productModel");
 		$obj->insertproductype($ma_loaisp, $ten_loaisp, $mota_loaisp);
-		header("Refresh: 0.0001 ; url=http://localhost/mvc_lab3/home/show");
+		header("Refresh: 0.0001 ; url=http://localhost:2002/MVC/home/show");
 	}
 	function delete($ma_loaisp)
 	{
