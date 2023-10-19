@@ -31,7 +31,7 @@ class order extends Controller
             $_SESSION['cart'][$ma_sp]['khuyenmai'] = $data['khuyenmai'];
             $_SESSION['cart'][$ma_sp]['soluong'] = $data['soluong'];
         }
-        header("refresh:0.001; url=" . url . "/order/getlistAddtocart");
+        header("refresh:0.001; url=http://localhost:2002/MVC/order/getlistAddtocart");
     }
     public function getlistAddtocart()
     {

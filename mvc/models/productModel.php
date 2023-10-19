@@ -182,7 +182,6 @@ class productModel  extends Database
         $sql = "Select * From customer";
         $stm = $this->connect()->query($sql);
         while ($row = $stm->fetch()) {
-
             $data[] = $row;
         }
         if (empty($data))
