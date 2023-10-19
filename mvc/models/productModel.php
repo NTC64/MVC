@@ -190,4 +190,28 @@ class productModel  extends Database
             // var_dump($data[]);
             return $data;
     }
+    public function getCustomerByID($makh) {
+        $sql = "SELECT * FROM customer WHERE makh='$makh'";
+        $stm = $this->connect()->query($sql);
+        $stm = $stm->fetch();
+        return $stm;
+    }
+    public function updateUser($makh, $tenkh, $dienthoai, $email, $diachi_lienhe, $diachi_giaohang) {
+        $sql = "UPDATE customer SET tenkh='$tenkh', dienthoai='$dienthoai', email='$email', diachi_lienhe='$diachi_lienhe', diachi_giaohang='$diachi_giaohang' WHERE makh='$makh'";
+        $this->connect()->exec($sql);
+        if ($this->connect()->exec($sql) == TRUE) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    public function deleteCustomerByID($makh) {
+        $sql = "DELETE FROM customer WHERE makh='$makh'";
+        $this->connect()->exec($sql);
+        if ($this->connect()->exec($sql) == TRUE) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 }

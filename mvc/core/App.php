@@ -34,14 +34,9 @@ class App
 			//echo $this->action;
 			unset($arr[1]);
 		}
-		//XỬ LÝ PARAMS
-
-		/*echo $this->controller."<br>";
-		echo $this->action."<br>";
-		print_r ($this->params)."<br>";*/
-
-		$this->params = $arr ? array_values($arr) : [];
-		call_user_func_array([$this->controller, $this->action], $this->params);
+		//get params
+        $this->params = $arr ? array_values($arr) : [];
+        call_user_func_array([$this->controller, $this->action], $this->params);
 	}
 
 

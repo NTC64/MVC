@@ -20,8 +20,8 @@
             <td><?php echo $value['email'] ?></td>
             <td><?php echo $value['diachi_lienhe'] ?></td>
             <td><?php echo $value['diachi_giaohang'] ?></td>
-            <td><a href="http://localhost:2002/MVC/user/update?makh=<?= $value['makh']; ?>">Edit</a></td>
-            <td><a href="http://localhost:2002/MVC/user/delete?makh=<?= $value['makh']; ?>">Delete</a></td>
+            <td><a href="http://localhost:2002/MVC/user/update/<?= $value['makh']; ?>">Edit</a></td>
+            <td><a href="http://localhost:2002/MVC/user/delete/<?= $value['makh']; ?>">Delete</a></td>
         </tr>
     <?php
             }
