@@ -14,7 +14,7 @@
             <td>Mã đơn hàng</td>
             <td>Ngày mua hàng</td>
             <td>Tổng tiền</td>
-            <td>Tên khách hàng</td>
+            <td>Mã khách hàng</td>
         </tr>
         <?php $total = 0; ?>
         <?php foreach ($data as $item) : ?>
