@@ -83,14 +83,16 @@ class order extends Controller
 
         $this->view("client/view_dtorder", $data);
     }
-    public function report() {
-//        $obj = $this->model("productModel");
-//        $data = $obj->report();
+    public function report()
+    {
+        //        $obj = $this->model("productModel");
+        //        $data = $obj->report();
         $this->view("client/view_index");
 
         $this->view("admin/view_report");
     }
-    public function reportBy() {
+    public function reportBy()
+    {
         $submit = isset($_POST['submit']) ? $_POST['submit'] : "";
         if ($submit == "Week") {
             $obj = $this->model("productModel");

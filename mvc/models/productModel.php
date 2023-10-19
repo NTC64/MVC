@@ -144,14 +144,14 @@ class productModel  extends Database
             $khuyenmai = $v['khuyenmai'];
 
             // Step 4: Insert data into the 'orderdetail' table
-            $sql = "INSERT INTO orderdetail (mahd, ma_sp, tensp, soluong, dongia, khuyenmai) 
-                    VALUES ('$mahd', '$ma_sp', '$tensp', '$quantity', '$dongia', '$khuyenmai')";
+            $sql = "INSERT INTO orderdetail (mahd, ma_sp, tensp, soluong, dongia, khuyenmai,`status`) 
+                    VALUES ('$mahd', '$ma_sp', '$tensp', '$quantity', '$dongia', '$khuyenmai','Đang giao hàng')";
             $this->connect()->exec($sql);
         }
     }
     public function showListOrder()
     {
-        $sql = "select * from `ordersp` join `customer` on `ordersp`.`makh`=`customer`.`makh`";
+        $sql = "select * from `ordersp` join `customer` on `ordersp`.`makh`=`customer`.`makh` join orderdetail on ordersp.mahd=orderdetail.mahd";
         $stm = $this->connect()->query($sql);
         while ($row = $stm->fetch()) {
 
@@ -177,6 +177,12 @@ class productModel  extends Database
             // var_dump($data[]);
             return $data;
     }
+    public function updateDetailOrder($mahd, $makh)
+    {
+        $sql = "UPDATE orderdetail SET status = 'Đã giao' WHERE mahd = $mahd";
+        $this->connect()->exec($sql);
+    }
+
     public function showcustomer()
     {
         $sql = "Select * From customer";
@@ -190,13 +196,15 @@ class productModel  extends Database
             // var_dump($data[]);
             return $data;
     }
-    public function getCustomerByID($makh) {
+    public function getCustomerByID($makh)
+    {
         $sql = "SELECT * FROM customer WHERE makh='$makh'";
         $stm = $this->connect()->query($sql);
         $stm = $stm->fetch();
         return $stm;
     }
-    public function updateUser($makh, $tenkh, $dienthoai, $email, $diachi_lienhe, $diachi_giaohang) {
+    public function updateUser($makh, $tenkh, $dienthoai, $email, $diachi_lienhe, $diachi_giaohang)
+    {
         $sql = "UPDATE customer SET tenkh='$tenkh', dienthoai='$dienthoai', email='$email', diachi_lienhe='$diachi_lienhe', diachi_giaohang='$diachi_giaohang' WHERE makh='$makh'";
         $this->connect()->exec($sql);
         if ($this->connect()->exec($sql) == TRUE) {
@@ -205,7 +213,8 @@ class productModel  extends Database
             return FALSE;
         }
     }
-    public function deleteCustomerByID($makh) {
+    public function deleteCustomerByID($makh)
+    {
         $sql = "DELETE FROM customer WHERE makh='$makh'";
         $this->connect()->exec($sql);
         if ($this->connect()->exec($sql) == TRUE) {
