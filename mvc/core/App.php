@@ -2,8 +2,8 @@
 //app.php gọi controller, models, views trong app
 class App
 {
-	protected $controller;
-	protected $action;
+	protected $controller = "home";
+	protected $action = "showIndex";
 	protected $params;
 	//lớp có 1 hàm mặc định là _contruct. khi chạy lớp App nó mặc định gọi hàm __contruct
 	function __construct()
@@ -48,11 +48,11 @@ class App
 	function Urlprocess()
 	{
 		//lấy được url
-        if (isset($_GET['url'])) {
-            $url = rtrim($_GET['url'], '/');
-            $url = filter_var($url, FILTER_SANITIZE_URL);
-            $url = explode('/', $url);
-            return $url;
-        }
+		if (isset($_GET['url'])) {
+			$url = rtrim($_GET['url'], '/');
+			$url = filter_var($url, FILTER_SANITIZE_URL);
+			$url = explode('/', $url);
+			return $url;
+		}
 	}
 }

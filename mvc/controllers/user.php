@@ -5,21 +5,23 @@ class User extends Controller
     {
         $obj = $this->model("productModel");
         $data =  $obj->showcustomer();
+        $this->view("client/view_index");
+
         $this->view("admin/view_customer", $data);
     }
-    public function update() {
+    public function update($makh)
+    {
         //get makh from url
-        $makh = $_GET['makh'];
-        var_dump($makh); die();
         $obj = $this->model("productModel");
         $data = $obj->getcustomer($makh);
+        $this->view("client/view_index");
         $this->view("admin/view_updatecustomer", $data);
     }
-    public function delete() {
-        //get makh from url
-        $makh = $_GET['makh'];
+    public function delete($makh)
+    {
+
         $obj = $this->model("productModel");
         $obj->deletecustomer($makh);
-        header("Location: /mvc_lab3/user/show"); // Chú ý: Dùng "Location" để điều hướng đến trang khác.
+        header("Location:" . url . "/user/show"); // Chú ý: Dùng "Location" để điều hướng đến trang khác.
     }
 }
