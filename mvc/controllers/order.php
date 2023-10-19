@@ -31,12 +31,14 @@ class order extends Controller
             $_SESSION['cart'][$ma_sp]['khuyenmai'] = $data['khuyenmai'];
             $_SESSION['cart'][$ma_sp]['soluong'] = $data['soluong'];
         }
-        header("refresh:0.001; url=http://localhost/mvc_lab3/order/getlistAddtocart");
+        header("refresh:0.001; url=" . url . "/order/getlistAddtocart");
     }
     public function getlistAddtocart()
     {
         if (isset($_SESSION['cart'])) {
-            $this->view("view_addtocart", $_SESSION['cart']);
+            $this->view("client/view_index");
+
+            $this->view("client/view_addtocart", $_SESSION['cart']);
         }
     }
     public function deleteAddtocart($ma_sp)
@@ -44,7 +46,7 @@ class order extends Controller
         if (array_key_exists($ma_sp, $_SESSION['cart'])) {
             unset($_SESSION['cart'][$ma_sp]);
         }
-        header("refresh:0.001; url=http://localhost/mvc_lab3/order/getlistAddtocart");
+        header("refresh:0.001; url=" . url . "/order/getlistAddtocart");
     }
     //cap nhap so luong san pham cho gio hang
     public function updateAddtocart($ma_sp, $newQuantity)
@@ -69,12 +71,16 @@ class order extends Controller
     {
         $obj = $this->model("productModel");
         $data = $obj->showListOrder();
-        $this->view("view_orders", $data);
+        $this->view("client/view_index");
+
+        $this->view("client/view_orders", $data);
     }
     public function showdetailorder($mahd, $makh)
     {
         $obj = $this->model("productModel");
         $data = $obj->showDetailOrder($mahd, $makh);
-        $this->view("view_dtorder", $data);
+        $this->view("client/view_index");
+
+        $this->view("client/view_dtorder", $data);
     }
 }

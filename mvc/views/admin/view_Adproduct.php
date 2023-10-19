@@ -1,4 +1,5 @@
 <?php
+// include url . "/views/admin/view_header.php";
 $obj = new product;
 $obj->getProductID();
 

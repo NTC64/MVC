@@ -5,6 +5,8 @@ class User extends Controller
     {
         $obj = $this->model("productModel");
         $data =  $obj->showcustomer();
-        $this->view("view_customer", $data);
+        $this->view("client/view_index");
+
+        $this->view("admin/view_customer", $data);
     }
 }

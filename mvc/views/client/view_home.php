@@ -3,39 +3,35 @@
 $obj = new product;
 $obj->showlist();
 ?>
+<style>
+    .product {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>Hình ảnh</th>
-            <th>Tên sản phẩm</th>
-            <th>Đơn giá</th>
-            <th>Khuyến mãi</th>
-            <th>Chi tiết</th>
-            <th>Thêm vào giỏ hàng</th>
+    .product .card {
+        margin: 0 12px;
+    }
+</style>
+<div class="product">
+    <?php foreach ($data as $key => $value) : ?>
+        <div class="card" style="width:400px">
+            <img class="card-img-top" src="<?php echo url; ?>/public/images/<?php echo $value['hinhanh'] ?>" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title"><?php echo $value['tensp']; ?></h4>
+                <p class="card-text"><?php if ($value["khuyenmai"] > 0) : ?>
+                <p><del><?php echo $value['dongia']; ?> VND</del></p>
+                <p><?php echo $value["khuyenmai"]; ?> VND</p>
+            <?php else : ?>
+                <p> <?php echo $value['dongia']; ?> VND</p>
+                <p> 0 VND</p>
 
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($data as $key => $value) : ?>
-            <tr>
-                <td><img src="<?php echo url; ?>/public/images/<?php echo $value['hinhanh'] ?>" width="50"></td>
-                <td><?php echo $value['tensp']; ?></td>
+            <?php endif; ?>
+            </p>
+            <a href="<?php echo url; ?>/product/getdetail/<?php echo $value['ma_sp']; ?>" class="btn btn-primary">Chi tiết</a>
+            <a href="<?php echo url; ?>/order/addtocart/<?php echo $value['ma_sp']; ?>" class="btn btn-primary">Thêm vào giỏ hàng</a>
 
-                <?php if ($value["khuyenmai"] > 0) : ?>
-                    <td><del><?php echo $value['dongia']; ?> VND</del></td>
-                    <td><?php echo $value["khuyenmai"]; ?> VND</td>
-                <?php else : ?>
-                    <td> <?php echo $value['dongia']; ?> VND</td>
-                    <td> 0 VND</td>
-
-                <?php endif; ?>
-
-
-                <td><a href="<?php echo url; ?>/product/getdetail/<?php echo $value['ma_sp']; ?>">Chi tiết</a></td>
-                <td><a href="<?php echo url; ?>/order/addtocart/<?php echo $value['ma_sp']; ?>">Thêm</a></td>
-
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>

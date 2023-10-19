@@ -1,4 +1,6 @@
 <?php
+// include(url . "/views/admin/view_header.php");
+
 $obj = new home();
 $obj->show();
 $txt_maloaisp = isset($_POST['txt_maloaisp']) ? $_POST['txt_maloaisp'] : "";
